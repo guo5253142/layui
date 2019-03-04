@@ -1,0 +1,9 @@
+layuiSignIn 是java项目，程序入口在App.java文件中，layui社区账号密码和临时文件夹也在App.java中设置
+codeORC 是python脚本，主要用于识别验证码。版本是python3，需要安装python-opencv和numpy。
+demo.py文件中，以下路径需要替换成你本地路径和App.java中设置的变量保持一致。
+code = recognize('D:\\code\\code.png','D:\\code\\codeORC\\model')
+file_handle=open('D:\\code\\result.txt',mode='w')
+
+签到的过程：layuiSignIn项目登录的时候获取到登录验证码图片，然后调用codeORC中的python脚本识别验证码，并保存到result.txt文件中，
+然后layuiSignIn项目读取result.txt文件中的验证码，并发起登录请求。如果登录成功则，调用签到接口进行签到。
+如果登录失败(会重新获取验证码再次进行登录,ps:此python脚本验证码识别准确率大概在70%)，
